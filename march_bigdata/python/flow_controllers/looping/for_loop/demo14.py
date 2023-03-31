@@ -14,7 +14,6 @@ for i in range(2,(num//2)+1):
     else:
         is_prime=0
 
-
 if is_prime==0:
     print("Prime number ")
 else:
