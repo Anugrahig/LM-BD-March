@@ -36,11 +36,11 @@ print("2. Subtraction \n")
 print("1. Division \n")
 print("1. Multiplication \n")
 
-c= int(input("Enter your choice: "))
+c= int(input("Enter your choice : "))
 n1=int(input("Enetr number 1 : "))
 n2=int(input("Enetr number 2 : "))
 if(c==1):
-    print(addition(n1,n2))
+    print(n1,"+",n2,"=",addition(n1,n2))
 elif(c==2):
     print(sub(n1,n2))
 elif(c==3):
