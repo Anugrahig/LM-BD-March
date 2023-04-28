@@ -1,5 +1,6 @@
 # Constructor
 """
+The constructor is method that is called when an object is created
 we call object with creation time
 # we can pass value with object creation,
 doesn't need separate method calling
