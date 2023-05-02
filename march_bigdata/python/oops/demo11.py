@@ -1,4 +1,4 @@
-# Seminar  Prepare o Tuesday
+# Seminar  Prepare on Tuesday
 # Polymorphism
 # Encapsulation
 
