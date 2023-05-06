@@ -9,20 +9,20 @@ Find all of the words in a string that are less than 5 letters (use string above
 string = "Practice Problems to Drill List Comprehension in Your Head."
 """
 string = "Practice Problems to Drill List Comprehension in Your Head"
-lst1=[i for i in range(1,1000) if i%8==0]
+lst1=[i for i in range(1,1001) if i%8==0]
 print(lst1)
 
-lst5=[ i for i in lst1 if "6" in str(i) ]
+lst2=[ i for i in lst1 if "6" in str(i) ]
+print(lst2)
+
+lst3=[i for i in string if i==" " ]
+print(len(lst3))
+
+lst4=[i for i in string if i not in "aeiouAEIOU"]
+print("".join(lst4))
+
+lst5=[ i for i in string.split() if len(i)<5]
 print(lst5)
-
-lst2=[i for i in string if i==" " ]
-print(len(lst2))
-
-lst3=[i for i in string if i not in "aeiouAEIOU"]
-print("".join(lst3))
-
-lst4=[ i for i in string.split() if len(i)<=5]
-print(lst4)
 # print(string)
 # for i in string:
     # print(i.strip(" "))
