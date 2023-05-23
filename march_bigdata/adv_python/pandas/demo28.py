@@ -35,7 +35,7 @@ print("*"*150)
 df1=df.loc[(df["age"]>40) & (df["age"]<60)][["fname","lname","age","prof"]]
 print(df1.head(5))
 print("*"*150)
-# df1=df.loc[(df["age"]>40) & (df["age"]<60) ].loc[df["loc"]=="us"][["fname","lname","age"]]
+# df1=df.loc[(df["age"]>=25) & (df["age"]<=35) ].loc[df["loc"]=="us"][["fname","lname","age"]]
 df1=df.loc[(df['loc'] == 'us') & (df['age'] >= 25) & (df['age'] <= 35)][["fname","lname","age"]]
 print(df1.head())
 print("*"*150)
