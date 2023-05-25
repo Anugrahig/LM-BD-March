@@ -30,12 +30,15 @@ print(df1.head(10))
 # # a
 print(df1.count())
 # 9
+print("9")
 df1=df.sort_values("dur",ascending=False)[["name","year","rating","dur"]].head(1)
 print(df1)
 # 10
+print("10")
 df1=df.sort_values("rating")[["name","year","rating","dur"]].head(1)
 print(df1)
 # 11
+print("11")
 
 df1=df.loc[(df["year"]>=2005) & (df["rating"]>=4)]
 # print(df1.head(10))
