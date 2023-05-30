@@ -6,5 +6,13 @@ print(df)
 df.dropna(inplace=True)
 mean_x=df["Calories"].mean()
 print(mean_x)
-df["Calories"]=df["Calories"].apply(lambda x: round(df["Calories"].mean(),2) if x>=400 else x)
+# df["Calories"]=df["Calories"].apply(lambda x: round(df["Calories"].mean(),2) if x>400 else x)
+print(df)
+
+print()
+#
+y=df["Calories"].mean()
+for x in df.index:
+    if df.loc[x,"Calories"]>400:
+        df.loc[x,"Calories"]=y
 print(df)
