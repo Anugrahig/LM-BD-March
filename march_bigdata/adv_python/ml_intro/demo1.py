@@ -12,8 +12,8 @@ Model  : To predict a categorical data
 # -----------
 """
 - Model : To predict Numerical value
-# eg: To Predict weather
-# eg: To Predict Interest value 
+# eg: To Predict weather (32C)
+# eg: To Predict Interest value(8.2%) 
 """
 
 
