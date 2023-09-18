@@ -1,0 +1,10 @@
+{
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "python.formatting.provider": "none",
+  "vscode-pets.petSize": "small",
+  "vscode-pets.position": "explorer",
+  "vscode-pets.theme": "none",
+  "vscode-pets.petType": "cat"
+}
