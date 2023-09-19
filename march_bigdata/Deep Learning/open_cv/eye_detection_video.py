@@ -1,7 +1,7 @@
 import cv2
 
-# cap=cv2.VideoCapture("open_cv/data/videoplayback.mp4")
-cap=cv2.VideoCapture(0)
+cap=cv2.VideoCapture("open_cv/data/videoplayback.mp4")
+# cap=cv2.VideoCapture(0)
 face_cascade=cv2.CascadeClassifier("open_cv/data/haarcascade_frontalface_default.xml")
 eye_cascade=cv2.CascadeClassifier("open_cv/data/haarcascade_eye.xml")
 while True:
