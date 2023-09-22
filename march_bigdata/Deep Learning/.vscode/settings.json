@@ -5,6 +5,6 @@
   "python.formatting.provider": "none",
   "vscode-pets.petSize": "small",
   "vscode-pets.position": "explorer",
-  "vscode-pets.theme": "none",
+  "vscode-pets.theme": "forest",
   "vscode-pets.petType": "cat"
 }
