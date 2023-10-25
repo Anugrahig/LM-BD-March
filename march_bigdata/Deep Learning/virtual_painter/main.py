@@ -2,11 +2,17 @@
 # web cam reading 
 import cv2
 import HandTrackingModule as htm
+import numpy as np
 
 
 
 detector=htm.handDetector()
 
+draw_color=(0,0,255)
+
+# height ,width, channel
+# black screen
+img_canvas=np.zeros((720,1280,3),np.uint8)
 
 
 cap=cv2.VideoCapture(0)
@@ -52,24 +58,39 @@ while True:
       print("Selection Mode")
       if y1<100:
         if 10<x1<230:
-          print("red")
+          draw_color=(0,0,255)
+          # print("red")
         elif 240<x1<460:
-          print("green")
+          
+          draw_color=(0,255,0)
+          # print("green")
+          
         elif 470 < x1<690:
-          print("blue")
+          draw_color=(255,0,0)
+          # print("blue")
         elif 700<x1<920:
-          print("yellow")
+          draw_color=(0,255,255)
+          
+          # print("yellow")
         elif 930<x1<1270:
-          print("Eraser")
+          draw_color=(0,0,0)
+          
+          # print("Eraser")
       
       # setting default color
-      cv2.rectangle(frame,(x1,y1),(x2,y2),color=(0,0,255),thickness=cv2.FILLED)
+      cv2.rectangle(frame,(x1,y1),(x2,y2),color=draw_color,thickness=cv2.FILLED)
       
       
     # drawing mode - index finger is up
     
     if fingers[1] and not fingers[2]:
-      print("Drawing Mode")
+      # print("Drawing Mode")
+      cv2.putText(frame,"Drawing Mode",(1000,650),fontFace=cv2.FONT_HERSHEY_SIMPLEX,fontScale=1,color=(255,255,0),thickness=3)
+      # radius =10
+      cv2.circle(frame,(x1,y1),10,draw_color,thickness=-1)
+      
+      
+      
   """
   # lmlist decect position of hands
   # 0 - 20 (first point) is landmarks
@@ -90,6 +111,8 @@ while True:
   
   
   cv2.imshow("Virtual Painter",frame)
+  # one canvas for img drawing and another for color selection
+  cv2.imshow("Canvas",img_canvas)
   
   if cv2.waitKey(1)& 0xFF==27:
     break
