@@ -55,6 +55,7 @@ while True:
     # selection mode - two finger is up
     
     if fingers[1] and fingers[2]:
+      xp,yp=0,0
       print("Selection Mode")
       if y1<100:
         if 10<x1<230:
@@ -84,10 +85,29 @@ while True:
     # drawing mode - index finger is up
     
     if fingers[1] and not fingers[2]:
+      
+      
       # print("Drawing Mode")
       cv2.putText(frame,"Drawing Mode",(1000,650),fontFace=cv2.FONT_HERSHEY_SIMPLEX,fontScale=1,color=(255,255,0),thickness=3)
       # radius =10
-      cv2.circle(frame,(x1,y1),10,draw_color,thickness=-1)
+      cv2.circle(frame,(x1,y1),20,draw_color,thickness=-1)
+      
+      if xp==0 and yp==0:
+        xp=x1
+        yp=y1
+        
+      # eraser  one condition other color has one condition 
+      
+      # black color condition
+      if draw_color==(0,0,0):
+        cv2.line(frame,(xp,yp),(x1,y1),color=draw_color,thickness=10)
+        cv2.line(img_canvas,(xp,yp),(x1,y1),color=draw_color,thickness=10)
+      else:
+        cv2.line(frame,(xp,yp),(x1,y1),color=draw_color,thickness=10)
+        cv2.line(img_canvas,(xp,yp),(x1,y1),color=draw_color,thickness=10)
+
+      xp,yp=x1,y1
+      
       
       
       
