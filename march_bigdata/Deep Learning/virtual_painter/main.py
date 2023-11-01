@@ -3,6 +3,7 @@
 import cv2
 import HandTrackingModule as htm
 import numpy as np
+import time
 
 
 
@@ -13,6 +14,9 @@ draw_color=(0,0,255)
 # height ,width, channel
 # black screen
 img_canvas=np.zeros((720,1280,3),np.uint8)
+
+p_time = 0
+
 
 
 cap=cv2.VideoCapture(0)
@@ -55,6 +59,7 @@ while True:
     # selection mode - two finger is up
     
     if fingers[1] and fingers[2]:
+      # xp,yp previous point
       xp,yp=0,0
       print("Selection Mode")
       if y1<100:
@@ -100,8 +105,8 @@ while True:
       
       # black color condition
       if draw_color==(0,0,0):
-        cv2.line(frame,(xp,yp),(x1,y1),color=draw_color,thickness=10)
-        cv2.line(img_canvas,(xp,yp),(x1,y1),color=draw_color,thickness=10)
+        cv2.line(frame,(xp,yp),(x1,y1),color=draw_color,thickness=50)
+        cv2.line(img_canvas,(xp,yp),(x1,y1),color=draw_color,thickness=50)
       else:
         cv2.line(frame,(xp,yp),(x1,y1),color=draw_color,thickness=10)
         cv2.line(img_canvas,(xp,yp),(x1,y1),color=draw_color,thickness=10)
@@ -126,13 +131,53 @@ while True:
   """
   
   
+  # Merging 2 canvas
+  
+  # convrt to gray scale
+  # apply threshold
+  # 
+
+  # bgr to gray convertion 
+  img_gray = cv2.cvtColor(img_canvas,cv2.COLOR_BGR2GRAY) # to gray
+  
+  # threshold inverse
+
+  thresh,img_inv = cv2.threshold(img_gray,20,255,cv2.THRESH_BINARY_INV)
+  # now color is black
+  
+  img_inv=cv2.cvtColor(img_inv,cv2.COLOR_GRAY2BGR)
   
   
+  # AND OPERATIONS
+  
+  frame=cv2.bitwise_and(frame,img_inv)
+  
+  frame=cv2.bitwise_or(frame,img_canvas)
+
+
+# canvas frame is .5 
+# last value will be zero
+
+# joing the frame
+  cv2.addWeighted(frame,1,img_canvas,.5,0)   
+  
+  
+  # calculating FPS
+  
+  c_time=time.time()
+  # frame per second alculation
+  fps=1/(c_time - p_time)
+  
+  p_time = c_time
+  
+  
+  cv2.putText(frame,str(int(fps)),(50,200),cv2.FONT_HERSHEY_SIMPLEX,5,(0,0,0),4)
   
   
   cv2.imshow("Virtual Painter",frame)
   # one canvas for img drawing and another for color selection
-  cv2.imshow("Canvas",img_canvas)
+  # cv2.imshow("Canvas",img_canvas)
+  # cv2.imshow("Gray Image",img_inv)
   
   if cv2.waitKey(1)& 0xFF==27:
     break
