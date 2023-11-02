@@ -13,6 +13,13 @@ detector=pm.poseDetector()
 
 cap=cv2.VideoCapture(file)
 
+count=0
+# standing = dir 0
+# sitting = dir 1
+
+# .5+.5 means 1 squat
+dir = 0
+
 while True:
   success,img=cap.read()
   img=cv2.resize(img,(1280,720))
@@ -41,6 +48,19 @@ while True:
     print(angle,"-------->",percentage)
     
     # print(angle)
+    
+    # to check standing Postion
+    if percentage ==100 : # Standing Position
+      if dir == 0: # moving towards down
+        count += .5
+        dir = 1 
+        
+    if percentage == 0: # Sitting Position
+      if dir == 1: #moving towards up
+        count += .5
+        dir = 0
+    print(int(count))
+        
   
   cv2.imshow("Video",img)
   if cv2.waitKey(100) & 0xFF == 27:
